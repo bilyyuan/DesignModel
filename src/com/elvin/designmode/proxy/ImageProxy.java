@@ -1,4 +1,4 @@
-package com.elvin.demo.proxy;
+package com.elvin.designmode.proxy;
 /**
  * This is VirtualProxy
  * 虚代理
