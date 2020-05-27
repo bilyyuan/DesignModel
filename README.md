@@ -67,8 +67,8 @@ purely implemented to create products.
 
 
 # 单例模式
-单例模式的method 3有何问题<br>
-1. 先看可见性<br>
+## 单例模式的method 3有何问题<br>
+1. 先看可见性
 可见性，是指线程之间的可见性，一个线程修改的状态对另一个线程是可见的。<br>
 也就是一个线程修改的结果。另一个线程马上就能看到。 <br>
 当一个共享变量被volatile修饰时，它会保证修改的值会立即被更新到主存，<br>所以对其他线程是可见的，当有其他线程需要读取时，它会去内存中读取新值。 <br><br>
@@ -94,25 +94,11 @@ purely implemented to create products.
 如果两个线程A,B同时执行getInstance，执行到if(instance == null). A&B都会申请锁， 如果A拿到，则B会等待，<br>
 A执行然后 instance = new SingletonInstance();<br>
 然后B开始执行，因为 通的共享变量不能保证可见性，所以A执行后对instance 的赋值可能没有更新到主存。<br>
-于是，B在执行synchronized中的代码时。instance可能还是null.
+于是，B在执行synchronized中的代码时。instance 可能还是null.
 
-=======
-<br>
-    public SingletonInstance getInstance() {
-        if (instance == null) {
-            synchronized (this) {
-                if (instance == null) {
-                    instance = new SingletonInstance();
-                }
-            }
-        }
-        return instance;
-    }
-<br>
-
-2. 问题
-因为在method 3中
->>>>>>> Stashed changes
+3. solution
+使用volatile, instance 定义为volatile, 则线程A对instance的修改在退出 synchorized 前就会写入主存，
+这样在线程B执行 synchorized 中的内容时，if (instance == null) 就会用最新的值来比较。
 
 ————————————————<br>
 版权声明：本文为CSDN博主「刘望舒」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
@@ -122,8 +108,4 @@ A执行然后 instance = new SingletonInstance();<br>
 ref:<br>
 https://blog.csdn.net/itachi85/article/details/50510124<br>
 for volatile<br>
-<<<<<<< Updated upstream
 https://blog.csdn.net/itachi85/article/details/50274169<br>
-=======
-https://blog.csdn.net/itachi85/article/details/50274169<br>
->>>>>>> Stashed changes
