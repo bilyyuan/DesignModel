@@ -29,20 +29,21 @@ ii. 增加一个实现IProvider的类，用于返回InstantSender
 4. 这样原有的代码就不用修改，只是增加新的代码
 5. 注意这里为了 演示增加了新的包，实际情况是不用新加这个包的，直接用原来的包就好了。
 
-#抽象工厂
+抽象工厂
 ![avatar](https://pic4.zhimg.com/80/ab2a90cfcc7a971b1e3127d1f531a486_720w.jpg)
 
-##增加一个新的产品线
+## 增加一个新的产品线
 (产品类型不变）
 ![avatar](https://pic1.zhimg.com/80/e8184a3c6b3463338d85c329004d7c64_720w.jpg)
 这是符合开闭原则的。
+
 # 图片引用
 作者：名姓
 链接：https://www.zhihu.com/question/20367734/answer/115807228
 来源：知乎
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
-#增加一个新的子产品
+# 增加一个新的子产品
  如果在原来鼠标，键盘的基本上增加耳麦
 ![avatar](https://pic4.zhimg.com/80/0f20f50524336fa9634e19237ce0ec7e_720w.jpg)
 这个修改了原来的工厂内部，不符合开闭原则。
@@ -53,7 +54,7 @@ ii. 增加一个实现IProvider的类，用于返回InstantSender
 所以如果后期需要增加新的产品线，用抽象工厂比较好。
 而如果是增加一个产品，那么用抽象工厂的话就需要每个工厂都做修改。
 
-#引用：
+# 引用：
 One uses inheritance and one uses composition.One
 creates only one product and the other creates a family of products.One makes
 use of the concrete types the subclasses create and the other's methods are
@@ -63,3 +64,45 @@ purely implemented to create products.
 链接：https://www.zhihu.com/question/20367734/answer/127069084
 来源：知乎
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+
+# 单例模式
+
+单例模式的method 3有何问题
+1. 先看可见性
+可见性，是指线程之间的可见性，一个线程修改的状态对另一个线程是可见的。<br>
+也就是一个线程修改的结果。另一个线程马上就能看到。 <br>
+当一个共享变量被volatile修饰时，它会保证修改的值会立即被更新到主存，<br>所以对其他线程是可见的，当有其他线程需要读取时，它会去内存中读取新值。 <br><br>
+而普通的共享变量不能保证可见性，因为普通共享变量被修改之后，<br>什么时候被写入主存是不确定的，当其他线程去读取时，<br>此时内存中可能还是原来的旧值，因此无法保证可见性。<br>
+
+2. 问题
+因为在method 3 <br>
+
+```java
+	public SingletonInstance getInstance() {
+		if (instance == null) {
+			synchronized (this) {
+			if (instance == null) {
+				instance = new SingletonInstance();
+			}
+			}
+		}
+		return instance;
+	}
+```
+
+如果两个线程A,B同时执行getInstance，执行到if(instance == null). A&B都会申请锁， 如果A拿到，则B会等待，<br>
+A执行然后 instance = new SingletonInstance();<br>
+然后B开始执行，因为 通的共享变量不能保证可见性，所以A执行后对instance 的赋值可能没有更新到主存。<br>
+于是，B在执行synchronized中的代码时。instance可能还是null.
+
+
+————————————————<br>
+版权声明：本文为CSDN博主「刘望舒」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>
+原文链接：https://blog.csdn.net/itachi85/java/article/details/50274169<br>
+
+
+ref:<br>
+https://blog.csdn.net/itachi85/article/details/50510124<br>
+for volatile<br>
+https://blog.csdn.net/itachi85/article/details/50274169<br>
