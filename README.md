@@ -129,5 +129,6 @@ ConcreteBuilder 明确是谁来担任这些角色，以及剧情走向等。(我
 
 所以Director这里成了一个工具人，要素都由ConcreteBuilder决定了，他只需要按特定的顺序组合各个要素。<br>
 当要拍一部新的戏时，只需要增加一个新的 ConcreteBuilder 就好了。<br>
-
+如果哪一个要素不需要，则可以在ConcreteBuilder中不设置这个变量即可。<br>
+见ConcreteBuilder的AddSpeaker内容就是空的。
 

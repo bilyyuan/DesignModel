@@ -85,7 +85,7 @@ public class ConcreteBuilder implements IVirtualBuilder {
     @Override
     public void addSpeaker() {
         // System.out.print("No speaker");
-        computer.setSpeaker("No");;
+        //computer.setSpeaker("No");;
     }
 
     
