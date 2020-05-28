@@ -109,3 +109,12 @@ ref:<br>
 https://blog.csdn.net/itachi85/article/details/50510124<br>
 for volatile<br>
 https://blog.csdn.net/itachi85/article/details/50274169<br>
+
+
+## builders 模式
+### GOF builder
+![Avatar](https://upload-images.jianshu.io/upload_images/3057657-0f6f6993abfb4283.png?imageMogr2/auto-orient/strip|imageView2/2/w/637)
+
+1. 每套新的配置，就是增加一个新的ConcreteBuilder.
+适用于，配置方式固定(电脑的配件类型固定）
+2. 如果要增加新的配件，则所有的ConcreteBuilder 都需要修改，如果有这样的需求，则这种模式不合适
