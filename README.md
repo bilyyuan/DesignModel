@@ -118,3 +118,16 @@ https://blog.csdn.net/itachi85/article/details/50274169<br>
 1. 每套新的配置，就是增加一个新的ConcreteBuilder.
 适用于，配置方式固定(电脑的配件类型固定）
 2. 如果要增加新的配件，则所有的ConcreteBuilder 都需要修改，如果有这样的需求，则这种模式不合适
+
+#### 自己的理解
+可以理解为 导演拍戏。<br>
+Director类就是导演 ConcreteBuilder是剧本 Computer类就是 拍出来的戏。<br>
+Director类中setBuilder就是设置剧本， createComputer 就是拍戏这个过程。 getComputer就是得到最后拍好的戏。<br>
+而IVirtualBuilder 确定的是剧中的要素， ConcreteBuilder 是明确要素的本身。<br>
+如IVirtualBuilder 确定有 男主，女主，男配，女配，剧情，等。<br>
+ConcreteBuilder 明确是谁来担任这些角色，以及剧情走向等。(我觉得)也可以不设置某些要素。<br>
+
+所以Director这里成了一个工具人，要素都由ConcreteBuilder决定了，他只需要按特定的顺序组合各个要素。<br>
+当要拍一部新的戏时，只需要增加一个新的 ConcreteBuilder 就好了。<br>
+
+
