@@ -132,3 +132,11 @@ ConcreteBuilder 明确是谁来担任这些角色，以及剧情走向等。(我
 如果哪一个要素不需要，则可以在ConcreteBuilder中不设置这个变量即可。<br>
 见ConcreteBuilder的AddSpeaker内容就是空的。
 
+### 书中摘抄
+1. 意图<br>
+将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。
+
+Builder normal2 是我们常见的builder，其 builder类中，<br>
+将必要要定义的参数设置为final， 来保证其一定被设置。
+
+
