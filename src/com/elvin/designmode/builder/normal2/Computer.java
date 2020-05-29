@@ -1,7 +1,7 @@
 package com.elvin.designmode.builder.normal2;
 
 /*
- * 
+ * 实事上这应该不是还的实现
  * Product.
  */
 public class Computer {

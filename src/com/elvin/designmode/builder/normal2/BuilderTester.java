@@ -1,5 +1,10 @@
 package com.elvin.designmode.builder.normal2;
 
+/**
+ * 实事上这应该不是还的实现
+ * @author spring
+ *
+ */
 public class BuilderTester {
     public static void main(String[] args) {
         String cpu = "Intel";

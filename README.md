@@ -140,3 +140,7 @@ Builder normal2 是我们常见的builder，其 builder类中，<br>
 将必要要定义的参数设置为final， 来保证其一定被设置。
 
 
+## 原型模式
+### 这个并没有理解到
+
+
