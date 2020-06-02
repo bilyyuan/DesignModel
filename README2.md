@@ -26,4 +26,16 @@ ref:https://www.jianshu.com/p/d80b6b4b76fc <br>
 ### 常规一点的例子
 ![avatar](https://www.runoob.com/wp-content/uploads/2014/08/decorator_pattern_uml_diagram.jpg)
 
+## Filter mode
+就是自己增加过滤器
+Java中有了lambda后已经不用自己写了
+//lambda表达式
+List<Person> men = people.stream()
+        .filter(o -> o.getGender() == Gender.Male)
+        .filter(o -> o.getAge() >= 23)
+        .collect(Collectors.toList());
+System.out.println("大于23的男性:" + men);
+————————————————
+版权声明：本文为CSDN博主「过了即是客」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/u011054333/java/article/details/64228904
 
