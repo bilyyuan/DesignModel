@@ -30,3 +30,12 @@ Invoker的时候会自动调用Command中的Reciver对应的action函数。
 
 
 
+## 观察者模式
+这个见过很多的模式，在实际书写中其实还有遇到一些问题。<br>
+1. 在状态改变和通知的时候，如果按照书中的实现，status放在ConcreteSubject中，<br>
+则setStatus函数只能写在ConcreteSubject中，无法通过Subject对象来调用。<br>
+2. 按书中的写法update没有参数(这个也需要将getStatus放在Subject类中才能用Subject对象来访问)<br>
+当然也可能书的是类图没有表示参数而已。
+
+### 注意
+1. 发出通知前确保目标的状态自身是一致的
