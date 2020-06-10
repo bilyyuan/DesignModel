@@ -62,5 +62,8 @@ Me: 想不想系统事件的传递，Touch事件从button到activity的传递。
 Demo是我自己想的。
 
 
+## 状态模式
+Camera的状态机
+
 
 
