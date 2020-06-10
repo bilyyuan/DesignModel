@@ -1,4 +1,4 @@
-# DesignModel 
+# DesignModel 行为模式
 ## 命令模式
 
 ![AVAATAR](https://img-blog.csdnimg.cn/20190606104432132.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0NtZFNtaXRo,size_16,color_FFFFFF,t_70)
@@ -39,3 +39,28 @@ Invoker的时候会自动调用Command中的Reciver对应的action函数。
 
 ### 注意
 1. 发出通知前确保目标的状态自身是一致的
+
+## Chain of responsibility(责任链模式）
+### 意图
+
+使多个对象都有机会处理请求，将对象连成一条链传递该请求，直到有一个对象处理它为止。<br>
+Me: 想不想系统事件的传递，Touch事件从button到activity的传递。 这个和广播的区别很明显，
+广播所有的接收对象会去处理这个广播事件<br>
+
+### 适用性
+
+* 多个对象可以处理一个请求时，需要运行时候确认哪个对象来处理。<br>
+* 不指定接收者的情况下，向多个对象中的一个提交一个请求<br>
+* 可处理一个请求的对象集合 应被动态指定。(没理解到位)<br>
+
+### 效果
+1. 降低耦合度
+接收者和发送者都没有对方的明确的信息，接收链中的对象不知道链的结构。
+2. 可以灵活的指派责任链，可以在运行时，对链进行动态的增加或修改，来增加或修改处理一个请求的那些职责。
+3. 一个请求不保证被接受，（责任链的的对象没有处理它）。
+
+Demo是我自己想的。
+
+
+
+
